@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wallpaper_app/Data/Online/Model.dart';
 import 'package:wallpaper_app/page_3.dart';
@@ -43,7 +42,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             padding: const EdgeInsets.only(left: 20),
             child: Text(
               widget.name,
-              style: GoogleFonts.poppins(
+              style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.w600,
               ),
@@ -53,7 +52,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             padding: const EdgeInsets.only(left: 20),
             child: Text(
               '${widget.mPhotos.length} wallpaper available',
-              style: GoogleFonts.poppins(
+              style: TextStyle(
                 fontSize: 22,
                 color: Colors.grey,
                 fontWeight: FontWeight.w400,

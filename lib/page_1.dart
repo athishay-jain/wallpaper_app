@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wallpaper_app/Data/Online/Bloc/photos_bloc.dart';
 import 'package:wallpaper_app/Data/Online/Bloc/photos_event.dart';
@@ -41,7 +40,7 @@ class _HomePageState extends State<HomePage> {
     getapi();
     context.read<PhotosBloc>().add(SetInitialPhotos());
   }
-
+bool close = false;
   TextEditingController searchController = TextEditingController();
   List<Map<String, dynamic>> cat = [
     {
@@ -196,27 +195,44 @@ class _HomePageState extends State<HomePage> {
                 ]),
                 child: TextField(
                   controller: searchController,
+                  onTap: (){
+                    close = true;
+                    setState(() {
+
+                    });
+                  },
                   onTapOutside: (value) {
+                    close = false;
+
                     if (searchController.text.isEmpty) {
                       context.read<PhotosBloc>().add(SetInitialPhotos());
                     }
                   },
                   onChanged: (value) {
+
                     context.read<PhotosBloc>().add(SearchPhoto(search: value));
                   },
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       color: Colors.grey, fontWeight: FontWeight.bold),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xffffffff),
                     contentPadding: EdgeInsets.only(top: 40, left: 30),
-                    suffixIcon: Icon(
+                    suffixIcon: IconButton(onPressed: (){
+                      FocusScope.of(context).unfocus();
+                      searchController.clear();
+                      context.read<PhotosBloc>().add(SetInitialPhotos());
+                      close = false;
+                      setState(() {
+
+                      });
+                    }, icon: close ? Icon(Icons.close,color: Colors.grey,size: 30,):Icon(
                       Icons.search,
                       color: Colors.grey,
                       size: 30,
-                    ),
+                    ),),
                     hintText: "Find Wallpaper..",
-                    hintStyle: GoogleFonts.poppins(color: Colors.grey),
+                    hintStyle: TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none,
@@ -253,7 +269,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
                             "Best of The month",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 22,
                             ),
@@ -316,7 +332,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
                             "The color tone",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
                                 fontSize: 22, fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -352,7 +368,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
                             "Categories",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
                                 fontSize: 22, fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -410,7 +426,7 @@ class _HomePageState extends State<HomePage> {
                                     Center(
                                         child: Text(
                                           AppConstents.cat[i],
-                                          style: GoogleFonts.poppins(
+                                          style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20,
                                             shadows: [
@@ -441,7 +457,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
                             '${mPhotos.photos.length} wallpaper available',
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
                               fontSize: 22,
                               color: Colors.grey,
                               fontWeight: FontWeight.w400,

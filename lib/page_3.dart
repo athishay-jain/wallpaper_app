@@ -1,7 +1,7 @@
-import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wallpaper_app/page_2.dart';
 
@@ -22,13 +22,18 @@ class _PreHomeState extends State<PreHome> {
         children: [
           Positioned.fill(
               top: 0,
-              child: CachedNetworkImage(imageUrl: widget.url,
-                fit: BoxFit.cover,
-                placeholder: (context,url) =>
-                    Shimmer.fromColors(baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
-                      child: Container(
-                        height: 100, width: 100, color: Colors.white,),))),
+              child: CachedNetworkImage(
+                  imageUrl: widget.url,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          height: 100,
+                          width: 100,
+                          color: Colors.white,
+                        ),
+                      ))),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -42,10 +47,11 @@ class _PreHomeState extends State<PreHome> {
                     Icons.arrow_back,
                     size: 30,
                     color: Colors.white,
-                    shadows: [Shadow(
-                      color: Colors.black,
-                      blurRadius: 10,
-                    )
+                    shadows: [
+                      Shadow(
+                        color: Colors.black,
+                        blurRadius: 10,
+                      )
                     ],
                   ),
                 ),
@@ -58,27 +64,17 @@ class _PreHomeState extends State<PreHome> {
                   ),
                   Column(
                     children: [
-                      ClipRect(
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 5),
-                          child: Padding(
+                      LiquidGlass(
+                        shape: LiquidRoundedSuperellipse(
+                          borderRadius: Radius.circular(20),
+                        ),
+                        child: Padding(
                             padding: const EdgeInsets.only(bottom: 10),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(55, 55),
-                                  padding: EdgeInsets.all(10),
-                                  backgroundColor: Colors.white.withAlpha(70),
-                                  shadowColor: Colors.black.withAlpha(30),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12))),
-                              child: Icon(
-                                Icons.info_outline,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            ),
-                          ),
+                            child: SizedBox(
+                              height: 55,
+                              width: 55,
+                              child: Icon(Icons.info_outline,color: Colors.white,size: 30,),
+                            )
                         ),
                       ),
                       Padding(
@@ -98,29 +94,20 @@ class _PreHomeState extends State<PreHome> {
                   ),
                   Column(
                     children: [
-                      ClipRect(
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 5),
+                       LiquidGlass(
+                         shape: LiquidRoundedSuperellipse(
+                           borderRadius: Radius.circular(20),
+                         ),
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 10),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(55, 55),
-                                  padding: EdgeInsets.all(10),
-                                  backgroundColor: Colors.white.withAlpha(70),
-                                  shadowColor: Colors.black.withAlpha(30),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12))),
-                              child: Icon(
-                                Icons.save_alt_rounded,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                            ),
+                            child: SizedBox(
+                              height: 55,
+                              width: 55,
+                              child: Icon(Icons.arrow_downward_rounded,color: Colors.white,size: 30,),
+                            )
                           ),
                         ),
-                      ),
+
                       Padding(
                         padding: const EdgeInsets.only(bottom: 40),
                         child: Text(
@@ -138,23 +125,18 @@ class _PreHomeState extends State<PreHome> {
                   ),
                   Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: Size(55, 55),
-                            padding: EdgeInsets.all(10),
-                            backgroundColor: Color(0xff3f65f4),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          child: Icon(
-                            Icons.brush,
-                            color: Colors.white,
-                            size: 30,
-                          ),
+                      LiquidGlass(
+                        shape: LiquidRoundedSuperellipse(
+                          borderRadius: Radius.circular(20),
+                        ),
+                        child: Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Container(
+                              height: 55,
+                              width: 55,
+                              color: Colors.blue,
+                              child: Icon(Icons.brush_rounded,color: Colors.white,size: 30,),
+                            )
                         ),
                       ),
                       Padding(
