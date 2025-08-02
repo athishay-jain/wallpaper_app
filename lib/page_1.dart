@@ -11,8 +11,6 @@ import 'package:wallpaper_app/appContents.dart';
 import 'package:wallpaper_app/page_2.dart';
 import 'package:wallpaper_app/page_3.dart';
 import 'package:http/http.dart' as http;
-import 'package:lottie/lottie.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -250,7 +248,7 @@ bool close = false;
                   return Center(
                       child: Padding(
                     padding: const EdgeInsets.only(top: 250),
-                    child: Lottie.asset("assets/lottie/loading.json",
+                    child: Image.asset("assets/gif/loading.gif",
                         height: 150, width: 150),
                   ));
                 }
@@ -295,7 +293,7 @@ bool close = false;
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => PreHome(
-                                                  url: photo.src.portrait)),
+                                                  url: photo.src.portrait,photo: photo,)),
                                         );
                                       },
                                       child: SizedBox(
@@ -484,7 +482,7 @@ bool close = false;
                                       Navigator.push(context, MaterialPageRoute(
                                         builder: (context) {
                                           return PreHome(
-                                              url: photo.src.large2x);
+                                              url: photo.src.large2x,photo: photo,);
                                         },
                                       ));
                                     });

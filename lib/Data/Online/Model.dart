@@ -43,6 +43,7 @@ class PhotosModel {
   int photographer_id;
   SrcModel src;
   String avg_color;
+  String alt;
 
   PhotosModel({
     required this.id,
@@ -54,6 +55,7 @@ class PhotosModel {
     required this.photographer_id,
     required this.src,
     required this.avg_color,
+    required this.alt,
   });
 
   factory PhotosModel.fromJson(Map<String, dynamic> json) {
@@ -67,6 +69,7 @@ class PhotosModel {
       photographer_id: json['photographer_id'],
       src: SrcModel.fromJson(json['src']),
       avg_color: json['avg_color'],
+      alt: json["alt"],
     );
   }
 }

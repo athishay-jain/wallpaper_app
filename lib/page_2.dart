@@ -45,6 +45,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.w600,
+                fontFamily: "poppins",
               ),
             ),
           ),
@@ -56,6 +57,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 fontSize: 22,
                 color: Colors.grey,
                 fontWeight: FontWeight.w400,
+                fontFamily: "poppins",
               ),
             ),
           ),
@@ -78,7 +80,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       setState(() {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return PreHome(url: photo.src.large2x);
+                            return PreHome(url: photo.src.large2x,photo: photo,);
                           },
                         ));
                       });
